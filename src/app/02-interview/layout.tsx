@@ -1,8 +1,7 @@
-import React from 'react';
-
+import {PropsWithChildren} from 'react';
 import './styles.css';
 
-function InterviewLayout({ children }) {
+function InterviewLayout({ children } :PropsWithChildren) {
   return (
     <>
       <main>{children}</main>
