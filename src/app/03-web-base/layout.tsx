@@ -1,4 +1,4 @@
-import React from 'react';
+import {CSSProperties, PropsWithChildren} from 'react';
 import { Kanit } from 'next/font/google';
 
 import SiteHeader from './SiteHeader';
@@ -10,20 +10,20 @@ const primaryFont = Kanit({
   subsets: ['latin'],
 });
 
-function WebBaseLayout({ children }) {
-  return (
-    <div
-      className="web-base"
-      style={{
-        '--font-family-primary':
-          primaryFont.style.fontFamily,
-      }}
-    >
-      <SiteHeader />
-      <main>{children}</main>
-      <SiteFooter />
-    </div>
-  );
+function WebBaseLayout({ children } : PropsWithChildren) {
+    return (
+        <div
+            className="web-base"
+            style={{
+                '--font-family-primary':
+                primaryFont.style.fontFamily,
+            } as CSSProperties}
+        >
+            <SiteHeader/>
+            <main>{children}</main>
+            <SiteFooter/>
+        </div>
+    );
 }
 
 export default WebBaseLayout;

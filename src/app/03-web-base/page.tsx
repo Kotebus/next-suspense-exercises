@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const dynamic = 'force-dynamic';
 
 async function WebBaseHomepage() {

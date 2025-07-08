@@ -1,11 +1,27 @@
-import React from 'react';
 import Link from 'next/link';
 
 import { getNavLinks } from '@/helpers/web-base-helpers';
+import {Suspense} from "react";
 
-async function SiteFooter() {
-  const navLinks = await getNavLinks();
+async function NavLinks() {
+  let navLinks = await getNavLinks();
 
+  return (
+      <>
+        {navLinks.map(
+            ({ slug, label, href }) => (
+                <li key={slug}>
+                  <Link href={href}>
+                    {label}
+                  </Link>
+                </li>
+            )
+        )}
+      </>
+  );
+}
+
+function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="logo-wrapper">
@@ -23,15 +39,9 @@ async function SiteFooter() {
           <h2>Navigation</h2>
           <nav>
             <ol>
-              {navLinks.map(
-                ({ slug, label, href }) => (
-                  <li key={slug}>
-                    <Link href={href}>
-                      {label}
-                    </Link>
-                  </li>
-                )
-              )}
+              <Suspense>
+                <NavLinks/>
+              </Suspense>
             </ol>
           </nav>
         </div>
