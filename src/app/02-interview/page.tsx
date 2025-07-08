@@ -1,10 +1,26 @@
 import React, {Suspense} from 'react';
-import CommentsPage from "@/app/02-interview/comments/page";
 import Spinner from "@/components/Spinner";
+import {getComments} from "@/helpers/interview-helpers";
+import Comment from "@/components/Comment";
 
 export const dynamic = 'force-dynamic';
 
-async function InterviewExercise() {
+async function Comments() {
+  const comments = await getComments();
+
+  return (
+      <>
+        {comments.map((comment) => (
+            <Comment
+                key={comment.id}
+                comment={comment}
+            />
+        ))}
+      </>
+  );
+}
+
+function InterviewExercise() {
 
   return (
     <>
@@ -125,7 +141,7 @@ async function InterviewExercise() {
       <section className="comments-section">
         <h2>Discussion</h2>
         <Suspense fallback={<Spinner color={'white'} size={20}/>}>
-          <CommentsPage/>
+          <Comments/>
         </Suspense>
       </section>
     </>
