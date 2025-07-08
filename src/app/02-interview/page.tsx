@@ -3,8 +3,6 @@ import Spinner from "@/components/Spinner";
 import {getComments} from "@/helpers/interview-helpers";
 import Comment from "@/components/Comment";
 
-export const dynamic = 'force-dynamic';
-
 async function Comments() {
   const comments = await getComments();
 
