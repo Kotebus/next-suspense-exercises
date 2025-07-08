@@ -1,4 +1,4 @@
-import React from 'react';
+import {CSSProperties, PropsWithChildren} from 'react';
 import {
   Nunito_Sans,
   Redacted_Script,
@@ -16,7 +16,7 @@ const loadingFont = Redacted_Script({
   display: 'block',
 });
 
-function VaporLayout({ children }) {
+function VaporLayout({ children } : PropsWithChildren) {
   return (
     <div
       className="vapor"
@@ -25,7 +25,7 @@ function VaporLayout({ children }) {
           primaryFont.style.fontFamily,
         '--font-family-loading':
           loadingFont.style.fontFamily,
-      }}
+      } as CSSProperties}
     >
       <header>
         <div className="header-content max-width-wrapper">
