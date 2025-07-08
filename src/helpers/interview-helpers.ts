@@ -1,21 +1,30 @@
+import {delay} from "@/utils";
+
 export async function getComments() {
   await delay(2500);
 
   return COMMENTS;
 }
 
-const delay = (ms) =>
-  new Promise((resolve) =>
-    setTimeout(resolve, ms)
-  );
+interface ICommentAuthor {
+  name: string;
+  avatarSrc: string;
+}
 
-const COMMENTS = [
+interface IComment {
+  id: string;
+  from: ICommentAuthor;
+  body: string;
+  postedAt: string;
+}
+
+const COMMENTS: IComment[] = [
   {
     id: crypto.randomUUID(),
     from: {
       name: 'BluePencilArtistry',
       avatarSrc:
-        '/avatars/BluePencilArtistry.png',
+          '/avatars/BluePencilArtistry.png',
     },
     body: 'Gwen, your work is such an inspiration! 🤩 It’s so cool how you’ve managed to blend classic art techniques with pop culture. I can’t wait to see what characters you choose to paint next!',
     postedAt: '5:33PM • August 23rd',

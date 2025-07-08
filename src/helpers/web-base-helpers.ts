@@ -1,4 +1,4 @@
-import React from 'react';
+import {delay} from "@/utils";
 
 export async function getNavLinks() {
   console.info(
@@ -8,11 +8,6 @@ export async function getNavLinks() {
 
   return LINKS;
 }
-
-const delay = (ms) =>
-  new Promise((resolve) =>
-    setTimeout(resolve, ms)
-  );
 
 const LINKS = [
   {

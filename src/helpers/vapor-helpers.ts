@@ -1,20 +1,31 @@
+import {delay} from "@/utils";
+
 export async function getGamesInLibrary() {
   await delay(1200);
 
   return GAMES;
 }
 
-const delay = (ms) =>
-  new Promise((resolve) =>
-    setTimeout(resolve, ms)
-  );
+export interface IAchievement {
+  granted: number;
+  total: number;
+}
 
-const GAMES = [
+interface IGame {
+  slug: string;
+  name: string;
+  description: string;
+  developer: string;
+  totalPlayed: number | '∞';
+  achievements: IAchievement;
+}
+
+const GAMES : IGame[] = [
   {
     slug: 'a-short-hike',
     name: 'A Short Hike',
     description:
-      'Hike, climb, and soar through the peaceful mountainside landscapes of Hawk Peak Provincial Park as you make your way to the summit.',
+        'Hike, climb, and soar through the peaceful mountainside landscapes of Hawk Peak Provincial Park as you make your way to the summit.',
     developer: 'adamgryu',
     totalPlayed: 5,
     achievements: {
